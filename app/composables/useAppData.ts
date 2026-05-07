@@ -160,12 +160,12 @@ export const useAppData = () => {
   const communities = useStorage("app_communities", [
     {
       id: 1,
-      name: "Guardiões do Oceano",
+      name: "Eco-Escolas",
       description:
         "Comunidade focada na limpeza de praias e preservação da vida marinha na costa portuguesa.",
       members: 1250,
       image:
-        "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?auto=format&fit=crop&q=80&w=800",
+        "https://www.dge.mec.pt/sites/default/files/pictures/logo_ee_s.png",
       ods: [
         { id: 14, color: "#0A97D9" },
         { id: 13, color: "#3F7E44" },
