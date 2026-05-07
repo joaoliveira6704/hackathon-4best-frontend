@@ -161,8 +161,7 @@ export const useAppData = () => {
     {
       id: 1,
       name: "Eco-Escolas",
-      description:
-        "Comunidade focada na limpeza de praias e preservação da vida marinha na costa portuguesa.",
+      description: "Comunidade focada na ecologia, ligada ao ensino português.",
       members: 1250,
       image:
         "https://www.dge.mec.pt/sites/default/files/pictures/logo_ee_s.png",
