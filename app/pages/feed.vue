@@ -14,7 +14,7 @@ const range = shallowRef<Range>({
 });
 const period = ref<Period>("daily");
 const isRefreshing = ref(false);
-
+const isPostModalOpen = ref(false);
 async function handleRefresh() {
   isRefreshing.value = true;
   await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -64,7 +64,12 @@ const suggestedCommunities = computed(() => communities.value.slice(0, 3));
             :loading="isRefreshing"
             @click="handleRefresh"
           />
-          <UButton icon="i-lucide-plus" color="primary" class="rounded-full" />
+          <UButton
+            icon="i-lucide-plus"
+            color="primary"
+            class="rounded-full"
+            @click="isPostModalOpen = true"
+          />
         </template>
       </UDashboardNavbar>
     </template>
@@ -189,4 +194,79 @@ const suggestedCommunities = computed(() => communities.value.slice(0, 3));
       </div>
     </template>
   </UDashboardPanel>
+  <UModal v-model:open="isPostModalOpen">
+    <template #content>
+      <UCard>
+        <template #header>
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-semibold">Nova publicação</h3>
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-lucide-x"
+              @click="isPostModalOpen = false"
+            />
+          </div>
+        </template>
+
+        <div class="space-y-4">
+          <!-- Autor -->
+          <div class="flex items-center gap-2">
+            <UAvatar src="https://i.pravatar.cc/150?u=ana" size="sm" />
+            <span class="text-sm font-medium">Ana Silva</span>
+          </div>
+
+          <!-- ODS pré-selecionado -->
+          <div>
+            <label class="text-sm font-medium mb-1 block"
+              >ODS relacionado</label
+            >
+            <UBadge
+              style="background: #3f7e44; color: #d1f0d4"
+              icon="i-lucide-leaf"
+            >
+              ODS 13 – Ação climática
+            </UBadge>
+          </div>
+
+          <!-- Imagem mockada -->
+          <div>
+            <label class="text-sm font-medium mb-1 block">Imagem</label>
+            <img
+              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800"
+              class="w-full h-40 object-cover rounded-lg"
+            />
+          </div>
+
+          <!-- Descrição mockada -->
+          <div class="w-full">
+            <label class="text-sm font-medium mb-1 block">Descrição</label>
+            <UTextarea
+              class="w-full"
+              model-value="Plantámos hoje 30 árvores autóctones numa área ardida da Serra da Estrela. Pequena ação, grande impacto!"
+              :rows="3"
+              readonly
+            />
+          </div>
+        </div>
+
+        <template #footer>
+          <div class="flex gap-2 justify-end">
+            <UButton
+              label="Cancelar"
+              color="neutral"
+              variant="ghost"
+              @click="isPostModalOpen = false"
+            />
+            <UButton
+              label="Publicar"
+              color="primary"
+              icon="i-lucide-send"
+              @click="isPostModalOpen = false"
+            />
+          </div>
+        </template>
+      </UCard>
+    </template>
+  </UModal>
 </template>
