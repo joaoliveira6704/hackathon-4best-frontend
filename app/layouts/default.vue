@@ -20,7 +20,6 @@ const links = [
       label: "Profile",
       icon: "i-lucide-inbox",
       to: "/profile",
-      badge: "4",
       onSelect: () => {
         open.value = false;
       },
@@ -37,20 +36,6 @@ const links = [
       label: "Comunidades",
       to: "/communities",
       icon: "i-lucide-users",
-    },
-  ],
-  [
-    {
-      label: "Feedback",
-      icon: "i-lucide-message-circle",
-      to: "https://github.com/nuxt-ui-templates/dashboard",
-      target: "_blank",
-    },
-    {
-      label: "Ods",
-      icon: "i-lucide-info",
-      to: "https://github.com/nuxt-ui-templates/dashboard",
-      target: "_blank",
     },
   ],
 ] satisfies NavigationMenuItem[][];

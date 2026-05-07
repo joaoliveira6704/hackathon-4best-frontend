@@ -1,43 +1,3 @@
-<template>
-  <UContainer class="py-8">
-    <UPage>
-      <UPageBody class="flex flex-col gap-2">
-        <ProfileHeader v-bind="userData" />
-
-        <div class="flex flex-col gap-4">
-          <ProfileStats :period="period" :range="range" />
-          <ProfileBadges :badges="badges" />
-        </div>
-
-        <ProfileCommunities orientation="horizontal" />
-
-        <UCard class="w-full">
-          <UTabs :items="tabs" variant="link" class="w-full">
-            <template #item="{ item }">
-              <div class="pt-2">
-                <ActivityList
-                  v-if="item.key === 'list'"
-                  :activities="activities"
-                />
-
-                <div v-else-if="item.key === 'feed'" class="space-y-6">
-                  <FeedPost
-                    v-for="i in 3"
-                    :key="i"
-                    :author-avatar="userData.avatar"
-                    content="A trabalhar no ODS 12: Consumo Responsável! ♻️"
-                    time="Há 2 horas"
-                  />
-                </div>
-              </div>
-            </template>
-          </UTabs>
-        </UCard>
-      </UPageBody>
-    </UPage>
-  </UContainer>
-</template>
-
 <script setup lang="ts">
 const { userData } = useAppData();
 console.log("Badges:", userData.value.badges);
@@ -61,3 +21,33 @@ const activities = ref([
   { label: "Limpeza de Praia", ods: "ODS 14", status: "pending" },
 ]);
 </script>
+
+<template>
+  <UContainer class="py-8 overflow-y-auto">
+    <UPage>
+      <UPageBody class="flex flex-col gap-2">
+        <ProfileHeader v-bind="userData" />
+
+        <div class="flex flex-col gap-4">
+          <ProfileStats />
+          <ProfileBadges :badges="badges" />
+        </div>
+
+        <ProfileCommunities orientation="horizontal" />
+
+        <UCard class="w-full">
+          <ProfileActivityList />
+        </UCard>
+        <UCard class="w-full">
+          <FeedPost
+            v-for="i in 3"
+            :key="i"
+            :author-avatar="userData.avatar"
+            content="A trabalhar no ODS 12: Consumo Responsável! ♻️"
+            time="Há 2 horas"
+          />
+        </UCard>
+      </UPageBody>
+    </UPage>
+  </UContainer>
+</template>

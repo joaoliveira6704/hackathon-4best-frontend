@@ -7,16 +7,6 @@ const items = ref<NavigationMenuItem[]>([
     icon: "i-lucide-house", // O módulo @nuxt/icon é automático no Nuxt UI
     to: "/",
   },
-  {
-    label: "About",
-    icon: "i-lucide-info",
-    to: "/about",
-  },
-  {
-    label: "Contact",
-    icon: "i-lucide-mail",
-    to: "/contact",
-  },
 ]);
 </script>
 
@@ -29,18 +19,19 @@ const items = ref<NavigationMenuItem[]>([
         class="flex h-(--ui-header-height) items-center justify-between gap-4"
       >
         <div class="flex items-center gap-2">
-          <img
-            src="https://placehold.co/300x300"
-            class="h-8 w-auto"
-            alt="Logo"
-          />
+          <img src="/logo.svg" class="h-8 w-auto" alt="Logo" />
         </div>
 
         <UNavigationMenu :items="items" variant="pill" class="hidden md:flex" />
 
         <div class="flex items-center gap-2">
           <UColorModeButton />
-          <UButton label="Começar" color="primary" class="hidden sm:flex" />
+          <UButton
+            label="Começar"
+            @click="$router.push('/feed')"
+            color="primary"
+            class="hidden sm:flex"
+          />
         </div>
       </nav>
     </UContainer>
