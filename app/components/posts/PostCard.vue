@@ -1,23 +1,23 @@
 <script setup lang="ts">
 const props = defineProps<{
-  username: string;
-  avatar: string;
-  content: string;
-  time: string;
-  postImage?: string;
+  username: string
+  avatar: string
+  content: string
+  time: string
+  postImage?: string
   ods: {
-    id: number;
-    color: string;
-  };
-}>();
+    id: number
+    color: string
+  }
+}>()
 
 // Estado reativo para o Like
-const isLiked = ref(false);
-const likesCount = ref(Math.floor(Math.random() * 50) + 1); // Simulação de likes iniciais
+const isLiked = ref(false)
+const likesCount = ref(Math.floor(Math.random() * 50) + 1) // Simulação de likes iniciais
 
 function toggleLike() {
-  isLiked.value = !isLiked.value;
-  isLiked.value ? likesCount.value++ : likesCount.value--;
+  isLiked.value = !isLiked.value
+  isLiked.value ? likesCount.value++ : likesCount.value--
 }
 </script>
 
@@ -56,7 +56,7 @@ function toggleLike() {
                 :src="`/ODS-${ods.id}.svg`"
                 class="w-full h-full object-contain"
                 alt="ODS Icon"
-              />
+              >
             </div>
           </template>
         </UPopover>
@@ -69,7 +69,7 @@ function toggleLike() {
         :src="postImage"
         class="w-full aspect-video object-cover cursor-pointer"
         @dblclick="toggleLike"
-      />
+      >
       <div
         v-else
         class="aspect-video bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center"

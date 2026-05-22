@@ -28,7 +28,7 @@
                 :src="`/ODS-${item.id}.svg`"
                 :alt="item.title"
                 class="w-16 h-16 shrink-0 rounded-md object-cover"
-              />
+              >
               <h3 class="font-bold text-default line-clamp-3">
                 {{ item.title }}
               </h3>
@@ -128,22 +128,23 @@
 </template>
 
 <script setup lang="ts">
-import { useAppData } from "~/composables/useAppData";
+import { useAppData } from '~/composables/useAppData'
 
 // Importe o ref se o seu Nuxt não estiver configurado com auto-import
 // import { ref } from 'vue'
 
-const { odsList } = useAppData();
+const { odsList } = useAppData()
 
-const isModalOpen = ref(false);
-const selectedOds = ref<any>(null); // Use <any> ou defina uma Interface para evitar erros de tipagem
+const isModalOpen = ref(false)
+const selectedOds = ref<any>(null) // Use <any> ou defina uma Interface para evitar erros de tipagem
 
 // Renomeado para coincidir com o template
 const openOdsDetails = (ods: any) => {
-  selectedOds.value = ods;
-  isModalOpen.value = true;
-};
+  selectedOds.value = ods
+  isModalOpen.value = true
+}
 </script>
+
 <style scoped>
 /* Opcional: Personalização da scrollbar para ficar mais elegante */
 .custom-scrollbar::-webkit-scrollbar {

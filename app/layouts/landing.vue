@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from "@nuxt/ui";
+import type { NavigationMenuItem } from '@nuxt/ui'
 
 const items = ref<NavigationMenuItem[]>([
   {
-    label: "Home",
-    icon: "i-lucide-house", // O módulo @nuxt/icon é automático no Nuxt UI
-    to: "/",
-  },
-]);
+    label: 'Home',
+    icon: 'i-lucide-house', // O módulo @nuxt/icon é automático no Nuxt UI
+    to: '/'
+  }
+])
 </script>
 
 <template>
@@ -19,7 +19,7 @@ const items = ref<NavigationMenuItem[]>([
         class="flex h-(--ui-header-height) items-center justify-between gap-4"
       >
         <div class="flex items-center gap-2">
-          <img src="/logo.svg" class="h-8 w-auto" alt="Logo" />
+          <img src="/logo.svg" class="h-8 w-auto" alt="Logo">
         </div>
 
         <UNavigationMenu :items="items" variant="pill" class="hidden md:flex" />
@@ -28,9 +28,9 @@ const items = ref<NavigationMenuItem[]>([
           <UColorModeButton />
           <UButton
             label="Começar"
-            @click="$router.push('/feed')"
             color="primary"
             class="hidden sm:flex"
+            @click="$router.push('/feed')"
           />
         </div>
       </nav>

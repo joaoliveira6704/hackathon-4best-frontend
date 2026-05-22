@@ -1,52 +1,53 @@
 <script setup lang="ts">
-const { globalFeed, communities } = useAppData();
-import PostCard from "~/components/posts/PostCard.vue";
+import PostCard from '~/components/posts/PostCard.vue'
 
-import { sub } from "date-fns";
-import type { DropdownMenuItem } from "@nuxt/ui";
-import type { Period, Range } from "~/types";
+import { sub } from 'date-fns'
+import type { DropdownMenuItem } from '@nuxt/ui'
+import type { Period, Range } from '~/types'
 
-const { isNotificationsSlideoverOpen } = useDashboard();
+const { globalFeed, communities } = useAppData()
+
+const { isNotificationsSlideoverOpen } = useDashboard()
 
 const range = shallowRef<Range>({
   start: sub(new Date(), { days: 14 }),
-  end: new Date(),
-});
-const period = ref<Period>("daily");
-const isRefreshing = ref(false);
-const isPostModalOpen = ref(false);
+  end: new Date()
+})
+const period = ref<Period>('daily')
+const isRefreshing = ref(false)
+const isPostModalOpen = ref(false)
 async function handleRefresh() {
-  isRefreshing.value = true;
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-  isRefreshing.value = false;
+  isRefreshing.value = true
+  await new Promise(resolve => setTimeout(resolve, 1500))
+  isRefreshing.value = false
 
   useToast().add({
-    title: "Feed atualizado",
-    icon: "i-lucide-refresh-cw",
-    color: "primary",
-  });
+    title: 'Feed atualizado',
+    icon: 'i-lucide-refresh-cw',
+    color: 'primary'
+  })
 }
 
 const suggestedUsers = [
   {
-    name: "Sofia Rocha",
-    avatar: "https://i.pravatar.cc/150?u=sofia",
-    handle: "@sofia_eco",
+    name: 'Sofia Rocha',
+    avatar: 'https://i.pravatar.cc/150?u=sofia',
+    handle: '@sofia_eco'
   },
   {
-    name: "João Pires",
-    avatar: "https://i.pravatar.cc/150?u=joaop",
-    handle: "@jpires_ods",
+    name: 'João Pires',
+    avatar: 'https://i.pravatar.cc/150?u=joaop',
+    handle: '@jpires_ods'
   },
   {
-    name: "Beatriz Luz",
-    avatar: "https://i.pravatar.cc/150?u=bea",
-    handle: "@bealuz",
-  },
-];
+    name: 'Beatriz Luz',
+    avatar: 'https://i.pravatar.cc/150?u=bea',
+    handle: '@bealuz'
+  }
+]
 
 // Pegamos as primeiras 3 comunidades como sugestão
-const suggestedCommunities = computed(() => communities.value.slice(0, 3));
+const suggestedCommunities = computed(() => communities.value.slice(0, 3))
 </script>
 
 <template>
@@ -168,9 +169,7 @@ const suggestedCommunities = computed(() => communities.value.slice(0, 3));
                     <span class="text-sm font-medium leading-none">{{
                       community.name
                     }}</span>
-                    <span class="text-xs text-gray-500"
-                      >{{ community.membersCount }} membros</span
-                    >
+                    <span class="text-xs text-gray-500">{{ community.membersCount }} membros</span>
                   </div>
                 </div>
                 <UButton
@@ -199,7 +198,9 @@ const suggestedCommunities = computed(() => communities.value.slice(0, 3));
       <UCard>
         <template #header>
           <div class="flex items-center justify-between">
-            <h3 class="text-base font-semibold">Nova publicação</h3>
+            <h3 class="text-base font-semibold">
+              Nova publicação
+            </h3>
             <UButton
               color="gray"
               variant="ghost"
@@ -218,9 +219,7 @@ const suggestedCommunities = computed(() => communities.value.slice(0, 3));
 
           <!-- ODS pré-selecionado -->
           <div>
-            <label class="text-sm font-medium mb-1 block"
-              >ODS relacionado</label
-            >
+            <label class="text-sm font-medium mb-1 block">ODS relacionado</label>
             <UBadge
               style="background: #3f7e44; color: #d1f0d4"
               icon="i-lucide-leaf"
@@ -235,7 +234,7 @@ const suggestedCommunities = computed(() => communities.value.slice(0, 3));
             <img
               src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800"
               class="w-full h-40 object-cover rounded-lg"
-            />
+            >
           </div>
 
           <!-- Descrição mockada -->

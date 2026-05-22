@@ -21,9 +21,9 @@
 <script setup lang="ts">
 const communities = [
   {
-    name: "Eco-Escolas",
-    img: "https://www.dge.mec.pt/sites/default/files/pictures/logo_ee_s.png",
+    name: 'Eco-Escolas',
+    img: 'https://www.dge.mec.pt/sites/default/files/pictures/logo_ee_s.png'
   },
-  { name: "ODS Local Porto", img: "https://placehold.co/40x40" },
-];
+  { name: 'ODS Local Porto', img: 'https://placehold.co/40x40' }
+]
 </script>
