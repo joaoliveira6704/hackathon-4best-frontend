@@ -2,14 +2,16 @@
 <script setup lang="ts">
 // Certifica-te que o tipo aceita o que estás a enviar
 defineProps<{
-  badges: Array<{ title: string; icon: string; color?: string }>;
-}>();
+  badges: Array<{ title: string, icon: string, color?: string }>
+}>()
 </script>
 
 <template>
   <UCard v-if="badges && badges.length">
     <template #header>
-      <h3 class="font-semibold text-sm">Conquistas & Badges</h3>
+      <h3 class="font-semibold text-sm">
+        Conquistas & Badges
+      </h3>
     </template>
     <div class="flex flex-wrap gap-2">
       <UBadge

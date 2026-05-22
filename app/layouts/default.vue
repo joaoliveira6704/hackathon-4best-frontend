@@ -1,94 +1,94 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from "@nuxt/ui";
+import type { NavigationMenuItem } from '@nuxt/ui'
 
-const route = useRoute();
-const toast = useToast();
+const route = useRoute()
+const toast = useToast()
 
-const open = ref(false);
+const open = ref(false)
 
 const links = [
   [
     {
-      label: "Home",
-      icon: "i-lucide-house",
-      to: "/feed",
+      label: 'Home',
+      icon: 'i-lucide-house',
+      to: '/feed',
       onSelect: () => {
-        open.value = false;
-      },
+        open.value = false
+      }
     },
     {
-      label: "Profile",
-      icon: "i-lucide-inbox",
-      to: "/profile",
+      label: 'Profile',
+      icon: 'i-lucide-inbox',
+      to: '/profile',
       onSelect: () => {
-        open.value = false;
-      },
+        open.value = false
+      }
     },
     {
-      label: "ODS",
-      icon: "i-lucide-sprout",
-      to: "/ods",
+      label: 'ODS',
+      icon: 'i-lucide-sprout',
+      to: '/ods',
       onSelect: () => {
-        open.value = false;
-      },
+        open.value = false
+      }
     },
     {
-      label: "Comunidades",
-      to: "/communities",
-      icon: "i-lucide-users",
-    },
-  ],
-] satisfies NavigationMenuItem[][];
+      label: 'Comunidades',
+      to: '/communities',
+      icon: 'i-lucide-users'
+    }
+  ]
+] satisfies NavigationMenuItem[][]
 
 const groups = computed(() => [
   {
-    id: "links",
-    label: "Go to",
-    items: links.flat(),
+    id: 'links',
+    label: 'Go to',
+    items: links.flat()
   },
   {
-    id: "code",
-    label: "Code",
+    id: 'code',
+    label: 'Code',
     items: [
       {
-        id: "source",
-        label: "View page source",
-        icon: "i-simple-icons-github",
-        to: `https://github.com/nuxt-ui-templates/dashboard/blob/main/app/pages${route.path === "/" ? "/index" : route.path}.vue`,
-        target: "_blank",
-      },
-    ],
-  },
-]);
+        id: 'source',
+        label: 'View page source',
+        icon: 'i-simple-icons-github',
+        to: `https://github.com/nuxt-ui-templates/dashboard/blob/main/app/pages${route.path === '/' ? '/index' : route.path}.vue`,
+        target: '_blank'
+      }
+    ]
+  }
+])
 
 onMounted(async () => {
-  const cookie = useCookie("cookie-consent");
-  if (cookie.value === "accepted") {
-    return;
+  const cookie = useCookie('cookie-consent')
+  if (cookie.value === 'accepted') {
+    return
   }
 
   toast.add({
     title:
-      "We use first-party cookies to enhance your experience on our website.",
+      'We use first-party cookies to enhance your experience on our website.',
     duration: 0,
     close: false,
     actions: [
       {
-        label: "Accept",
-        color: "neutral",
-        variant: "outline",
+        label: 'Accept',
+        color: 'neutral',
+        variant: 'outline',
         onClick: () => {
-          cookie.value = "accepted";
-        },
+          cookie.value = 'accepted'
+        }
       },
       {
-        label: "Opt out",
-        color: "neutral",
-        variant: "ghost",
-      },
-    ],
-  });
-});
+        label: 'Opt out',
+        color: 'neutral',
+        variant: 'ghost'
+      }
+    ]
+  })
+})
 </script>
 
 <template>
@@ -115,7 +115,7 @@ onMounted(async () => {
             :src="collapsed ? '/signo.svg' : '/logo.svg'"
             :class="collapsed ? 'max-h-8' : 'max-h-10'"
             alt="Logo"
-          />
+          >
         </NuxtLink>
 
         <UNavigationMenu

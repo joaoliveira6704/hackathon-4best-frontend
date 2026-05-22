@@ -1,15 +1,15 @@
 <script setup lang="ts">
-const { communities } = useAppData();
-const search = ref("");
+const { communities } = useAppData()
+const search = ref('')
 
 const filteredCommunities = computed(() => {
   // Adiciona o .value aqui para aceder ao array dentro da Ref do useStorage
-  if (!communities.value) return [];
+  if (!communities.value) return []
 
-  return communities.value.filter((c) =>
-    c.name.toLowerCase().includes(search.value.toLowerCase()),
-  );
-});
+  return communities.value.filter(c =>
+    c.name.toLowerCase().includes(search.value.toLowerCase())
+  )
+})
 </script>
 
 <template>
@@ -68,7 +68,7 @@ const filteredCommunities = computed(() => {
               <img
                 :src="community.image"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              >
               <div class="absolute top-2 right-2 flex gap-1">
                 <UPopover
                   v-for="item in community.ods"
@@ -83,7 +83,7 @@ const filteredCommunities = computed(() => {
                   </UBadge>
                   <template #content>
                     <div class="p-2">
-                      <img :src="`/ODS-${item.id}.svg`" class="w-16 h-16" />
+                      <img :src="`/ODS-${item.id}.svg`" class="w-16 h-16">
                     </div>
                   </template>
                 </UPopover>

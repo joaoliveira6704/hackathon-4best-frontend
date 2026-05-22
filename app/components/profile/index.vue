@@ -7,7 +7,11 @@
         <ProfileStats :stats="statsData" />
 
         <UCard>
-          <template #header><h3 class="font-semibold">Badges</h3></template>
+          <template #header>
+            <h3 class="font-semibold">
+              Badges
+            </h3>
+          </template>
           <div class="flex flex-wrap gap-2">
             <UBadge
               v-for="b in badges"
@@ -48,24 +52,24 @@
 
 <script setup lang="ts">
 const tabs = [
-  { key: "list", label: "Bucket List", icon: "i-lucide-list-checks" },
-  { key: "feed", label: "Feed Pessoal", icon: "i-lucide-layout-grid" },
-];
+  { key: 'list', label: 'Bucket List', icon: 'i-lucide-list-checks' },
+  { key: 'feed', label: 'Feed Pessoal', icon: 'i-lucide-layout-grid' }
+]
 
 // Mock data (em produção viria de uma API/useFetch)
 const userData = {
-  name: "Ana Silva",
-  handle: "@ana_sustentavel",
-  bio: "...",
-  avatar: "...",
-};
+  name: 'Ana Silva',
+  handle: '@ana_sustentavel',
+  bio: '...',
+  avatar: '...'
+}
 const statsData = [
   /* ... */
-];
+]
 const activitiesData = [
   /* ... */
-];
+]
 const badges = [
   /* ... */
-];
+]
 </script>
